@@ -1,0 +1,24 @@
+{
+  "name": "node_express_boilerplate",
+  "version": "1.0.0",
+  "description": "this is a boiler plate for my node express apps",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"nodemon server.js"
+  },
+  "keywords": [
+    "boilerplate",
+    "nodejs"
+  ],
+  "author": "otiko jairus",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.3",
+    "uuid": "^8.3.2"
+  }
+}
