@@ -26,6 +26,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // add Routes here 
 app.use("/api/v1/example/route", routes.ExampleRoute);
+app.use("/api/v1/Auth", routes.AuthRoute);
+
 
 
 const PORT = process.env.PORT || 3000;
