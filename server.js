@@ -27,6 +27,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // add Routes here 
 app.use("/api/v1/example/route", routes.ExampleRoute);
 app.use("/api/v1/Auth", routes.AuthRoute);
+app.use("/api/v1/group", routes.GroupRoute);
+
 
 
 

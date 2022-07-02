@@ -13,6 +13,8 @@ mongoose
 //   add all models here...
 module.exports.ExampleHandler = require("./ExampleModel");
 module.exports.AuthModel = require("./Auth/Auth");
+module.exports.GroupModel = require("./GroupModel");
+
 
 
 
