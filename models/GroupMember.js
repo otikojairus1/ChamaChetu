@@ -16,12 +16,18 @@ const GroupMemberSchema = new mongoose.Schema({
         required: true
 
     },
+    walletBalance:{
+        type: Number,
+        default:0,
+        required: false,
+    },
     createdAt: {
       type: Date,
       default: Date.now,
     },
-    active: {
-        type: Boolean
+    sessionNo: {
+        type: Number,
+        required: true
     }
 })
 

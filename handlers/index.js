@@ -1,6 +1,8 @@
 module.exports = {
 	...require('./ExampleHandler'),
 	...require('./Auth/AuthHandler'),
+	...require('./group'),
+
 
 };
 

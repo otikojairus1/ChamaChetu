@@ -1,0 +1,298 @@
+{
+	"info": {
+		"_postman_id": "2b140f4e-3d86-4fe1-b4dc-fd09c7ac24be",
+		"name": "ChamaChetuApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Loggin endpoint",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"password\":\"12345678\",\n    \"username\":\"otikojairus\",\n    \"email\":\"otikojairus@gmail.com\",\n    \"phone\":\"254722753364\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/Auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"Auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Endpoint",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"password\":\"12345678\",\n    \"username\":\"otikojairus\",\n    \"email\":\"otikojairus@gmail.com\",\n    \"phone\":\"254722753364\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/Auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"Auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create group",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"groupName\":\"Wamama\",\n    \"Admin\":\"dorice@gmail.com\",\n    \"groupDescription\":\"this is a wamama self help group\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/group/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"group",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all groups",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/group/get/groups",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"group",
+						"get",
+						"groups"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a group member",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"groupName\":\"wamama\",\n    \"memberEmail\":\"otikojairus@gmail.com\",\n    \"sessionNo\":1\n\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/group/add/member",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"group",
+						"add",
+						"member"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all group members",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"groupName\":\"wamama\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/group/get/members",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"group",
+						"get",
+						"members"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create merry go round session",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"groupName\":\"Wamama001\",\n    \"sessions\":10,\n    \"interval\":7,\n    \"membersEmail\":[\"otikojairus@gmail.com\",\"dorice@yahoo.com\",\"anet@yahoo.com\"]\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/group/create/merrygoround",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"group",
+						"create",
+						"merrygoround"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all merry go rounds",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/group/get/merrygorounds",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"group",
+						"get",
+						"merrygorounds"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "making contribution",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"groupName\":\"Wamama\",\n    \"contributorEmail\":\"otikojairus@gmail.com\",\n    \"receiverEmail\":\"nyaga@yahoo.com\",\n    \"merryGoRoundCode\":\"7836478jewhruioqy8923\",\n    \"session\":1,\n    \"amount\":10000\n\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/v1/group/contribute",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"group",
+						"contribute"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all contributions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/v1/group/get/contributions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"group",
+						"get",
+						"contributions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
