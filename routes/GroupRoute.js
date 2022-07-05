@@ -10,6 +10,8 @@ router.post("/create/merrygoround", handler.merrygoround);
 router.get("/get/merrygorounds", handler.getmerrygoround);
 router.post("/contribute", handler.addContribution);
 router.get("/get/contributions", handler.getAllContributions);
+router.get("/mpesa/checkout", handler.mpesa);
+
 
 
 

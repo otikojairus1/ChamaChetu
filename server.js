@@ -11,6 +11,11 @@ require("./models");
 
 const app = express();
 
+const cors = require('cors');
+app.use(cors({
+    origin: '*'
+}));
+
 //  const allowCrossDomain = function (req, res, next) {
 //    req.header("Access-Control-Allow-Origin", "*");
 //    req.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");

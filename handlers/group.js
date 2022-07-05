@@ -3,6 +3,7 @@ const GroupModel = require("../models/GroupModel");
 const GroupMembers = require("../models/GroupMember");
 const Contribution = require("../models/Contribution");
 const merrygoroundModel = require("../models/merryGoRound");
+let unirest = require('unirest');
 
 
 exports.create = (req, res) => {
@@ -70,6 +71,9 @@ exports.getAllContributions = (req, res) => {
 // creates new contributions
 
 exports.addContribution = (req, res) => {
+// make mpesa deposit
+
+// add a new contribution
     let newContribution = new Contribution({
         groupName: req.body.groupName,
         contributorEmail: req.body.contributorEmail,
@@ -176,4 +180,44 @@ exports.SoftdeleteGroupModel = (req, res) => {
             res.status(200).json({ "responseStatusCode": 500, "responseDescription": "we encountered an error while deleting your resource! supply a correct ID", "error": err });
         })
 }
+
+// mpesa logi
+
+exports.mpesa = (req, resp) => {
+
+    // get access token
+let request1 = unirest('GET', 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials')
+.headers({ 'Authorization': 'Bearer TUk3NG5hMGxlQWZaRmNJR0JUOVRYWVZ2N2Frb2lSRkI6eVM1MFhraGN1eGw4VTJNaA==' })
+.send()
+.end(res => {
+    if (res.error) {
+    resp.status(200).json({ "responseStatusCode": 200, "responseDescription": res.error })
+    }else{
+   resp.status(200).json({ "responseStatusCode": 200, "responseDescription": "MPESA initiated successfully!","accessToken":res.raw_body });
+
+    }
+    //console.log(res.raw_body);
+   // res.status(200).json({ "responseStatusCode": 200, "responseDescription": "MPESA initiated successfully!","accessToken":res.raw_body });
+
+});
+
+    // end of access token
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
