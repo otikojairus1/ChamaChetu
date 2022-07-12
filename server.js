@@ -38,5 +38,5 @@ app.use("/api/v1/group", routes.GroupRoute);
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, (req, res) => {
-  console.log(`Server runnng on ${PORT}`);
+  console.log(`chamachetu Server running on port ${PORT}`);
 });

@@ -14,6 +14,8 @@ mongoose
 module.exports.ExampleHandler = require("./ExampleModel");
 module.exports.AuthModel = require("./Auth/Auth");
 module.exports.GroupModel = require("./GroupModel");
+module.exports.GroupRequests = require("./groupRequests");
+
 
 
 
