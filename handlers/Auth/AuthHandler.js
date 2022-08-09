@@ -17,7 +17,7 @@ exports.AddUser = (req, res) => {
 }
 // login endpoint
 exports.login = (req, res) => {
-    AuthModel.find({ username: req.body.username, password: req.body.password }, (err, user) => {
+    AuthModel.find({ email: req.body.email, password: req.body.password }, (err, user) => {
         console.log(user);
         if (err) {
             res.status(200).json({ "responseStatusCode": 401, "responseDescription": "we encountered an error while logging you in!", "error": err });
