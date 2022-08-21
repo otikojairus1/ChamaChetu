@@ -6,6 +6,7 @@ exports.AddUser = (req, res) => {
         username: req.body.username,
         email: req.body.email,
         phone: req.body.phone,
+        amount: 0,
         password: req.body.password,
     })
     user.save().then((user) => {

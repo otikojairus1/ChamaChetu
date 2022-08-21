@@ -16,6 +16,8 @@ router.get("/view/membership/request", handler.view_membership_request);
 router.post("/accept/membership/request", handler.accept_membership_request);
 router.post("/create/welfare_kit", handler.create_welfare_kit);
 router.post("/create/welfare_kit/transaction", handler.create_welfare_kit_transaction);
+router.post("/update/wallet", handler.update_wallet);
+
 
 
 

@@ -1,5 +1,7 @@
 const GroupModel = require("../models/GroupModel");
 const GroupMembers = require("../models/GroupMember");
+const User = require("../models/Auth/Auth");
+
 const Contribution = require("../models/Contribution");
 const merrygoroundModel = require("../models/merryGoRound");
 const GroupRequests = require("../models/groupRequests");
@@ -460,6 +462,24 @@ exports.create_welfare_kit = (req, res) => {
         responseStatusCode: 401,
         responseDescription: "Client side error, check on your request body",
         data: err,
+      });
+    });
+};
+
+exports.update_wallet = (req, res) => {
+  User.findByIdAndUpdate({ _id: req.body.id }, { amount: req.body.amount })
+    .then((res) => {
+      res.json({
+        responseStatusCode: 200,
+        responseDescription: "wallet updated successfully",
+        data: res,
+      });
+    })
+    .catch((err) => {
+      res.json({
+        responseStatusCode: 200,
+        responseDescription: "wallet updated successfully",
+        
       });
     });
 };
