@@ -467,21 +467,38 @@ exports.create_welfare_kit = (req, res) => {
 };
 
 exports.update_wallet = (req, res) => {
-  User.findByIdAndUpdate({ _id: req.body.id }, { amount: req.body.amount })
-    .then((res) => {
-      res.json({
-        responseStatusCode: 200,
-        responseDescription: "wallet updated successfully",
-        data: res,
+  User.find({ _id: req.body.id }, (err, data) => {
+    console.log(data[0].amount);
+    if (err) {
+      res.status(200).json({
+        responseStatusCode: 401,
+        responseDescription: "we encountered an error while sending a request!",
+        error: err,
       });
-    })
-    .catch((err) => {
-      res.json({
-        responseStatusCode: 200,
-        responseDescription: "wallet updated successfully",
-        
-      });
-    });
+    } else {
+      if (data.length == 0) {
+        res.status(200).json({
+          responseStatusCode: 401,
+          responseDescription: "No wallet found with the specified ID",
+        });
+      } else {
+        User.updateOne(
+          { _id: req.body.id },
+          { amount: data[0].amount + req.body.amount },
+          (err, data1) => {
+            if (err) throw err;
+            console.log("1 document updated");
+
+            res.status(201).json({
+              responseStatusCode: 201,
+              responseDescription: "Transaction was created successfully",
+              data: data1,
+            });
+          }
+        );
+      }
+    }
+  });
 };
 
 // create a wallet kit transaction
@@ -540,3 +557,30 @@ exports.create_welfare_kit_transaction = (req, res) => {
       });
     });
 };
+
+
+exports.getGroup = (req, res) => { 
+  GroupMembers.find({ memberEmail: req.body.email }, (err, user) => {
+    console.log(user);
+    if (err) {
+      res.status(200).json({
+        responseStatusCode: 401,
+        responseDescription: "we encountered an error while logging you in!",
+        error: err,
+      });
+    } else {
+      if (user.length == 0) {
+        res.status(200).json({
+          responseStatusCode: 401,
+          responseDescription: "The group has no members",
+        });
+      } else {
+        res.status(200).json({
+          responseStatusCode: 200,
+          responseDescription: "your group details loaded successfully",
+          data: user[0],
+        });
+      }
+    }
+  });
+}
