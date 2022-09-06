@@ -1,7 +1,7 @@
 const GroupModel = require("../models/GroupModel");
 const GroupMembers = require("../models/GroupMember");
 const User = require("../models/Auth/Auth");
-
+const ShareModel = require("../models/Share");
 const Contribution = require("../models/Contribution");
 const merrygoroundModel = require("../models/merryGoRound");
 const GroupRequests = require("../models/groupRequests");
@@ -9,6 +9,55 @@ const WelfareKit = require("../models/WelfareKit");
 const WelfareKitTransaction = require("../models/welfareKitTransaction");
 
 let unirest = require("unirest");
+
+exports.purchase_share = (req, res) => {
+  let share = new ShareModel({
+    email: req.body.email,
+    share: req.body.share,
+  });
+  share
+    .save()
+    .then((share) => {
+      res.status(201).json({
+        responseStatusCode: 201,
+        responseDescription: "share was created successfully",
+        data: share,
+      });
+    })
+    .catch((err) => {
+      // console.log(err)
+      res.status(401).json({
+        responseStatusCode: 401,
+        responseDescription: "Client side error, check on your request body",
+        data: err,
+      });
+    });
+};
+
+// check_share
+
+
+exports.check_share = (req, res) => {
+  ShareModel.find({ email: req.body.email }, (err, user) => {
+    if (user) {
+      res.status(200).json({
+        responseStatusCode: 200,
+        responseDescription: "Resource fetch success!",
+        data: user,
+      });
+    } else {
+      res.status(404).json({
+        responseStatusCode: 404,
+        responseDescription: "no resource found with the supplied id",
+        data: err,
+      });
+    }
+  });
+};
+
+
+
+// end of shares
 
 exports.creategroup = (req, res) => {
   let newGroup = new GroupModel({
@@ -558,8 +607,7 @@ exports.create_welfare_kit_transaction = (req, res) => {
     });
 };
 
-
-exports.getGroup = (req, res) => { 
+exports.getGroup = (req, res) => {
   GroupMembers.find({ memberEmail: req.body.email }, (err, user) => {
     console.log(user);
     if (err) {
@@ -583,4 +631,43 @@ exports.getGroup = (req, res) => {
       }
     }
   });
-}
+};
+
+exports.contribute = (req, res) => {
+  User.find({ email: req.body.email }, (err, user) => {
+    console.log(user);
+    if (err) {
+      res.status(200).json({
+        responseStatusCode: 401,
+        responseDescription:
+          "we encountered an error while making the contribution!",
+        error: err,
+      });
+    } else {
+      if (user.length == 0) {
+        res.status(200).json({
+          responseStatusCode: 401,
+          responseDescription: "The group has no members",
+        });
+      } else {
+        User.updateOne(
+          { email: req.body.email },
+          { amount: req.body.amount + user[0].amount },
+          (err, data) => {
+            if (err) {
+              res.json({ err: err });
+            } else {
+              //  User.updateOne({email: req.body.senderEmail}, {amount:req.body.amount})
+
+              res.status(200).json({
+                responseStatusCode: 200,
+                responseDescription: "your contribute was successfully",
+                data: data,
+              });
+            }
+          }
+        );
+      }
+    }
+  });
+};

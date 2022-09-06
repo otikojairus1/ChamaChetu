@@ -18,6 +18,12 @@ router.post("/create/welfare_kit", handler.create_welfare_kit);
 router.post("/create/welfare_kit/transaction", handler.create_welfare_kit_transaction);
 router.post("/update/wallet", handler.update_wallet);
 router.post("/get/group", handler.getGroup);
+router.post("/make/contribution", handler.contribute);
+router.post("/buy/share", handler.purchase_share);
+router.post("/fetch/share", handler.check_share);
+
+
+
 
 
 
